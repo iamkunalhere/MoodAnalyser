@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
 public class MoodAnalyserTest {
-
    MoodAnalyser moodAnalyserObject = new MoodAnalyser();
     // Test for testing Happy mood
    @Test
