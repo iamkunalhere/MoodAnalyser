@@ -9,15 +9,21 @@ public class MoodAnalyser {
     }
     // Parameterized constructor
     public MoodAnalyser(String message) {
-        this.message=message;
+        this.message = message;
     }
     // Method for analyzing the mood
     public String moodAnalyserMethod() {
-        if (message.contains("happy")) {
-            return "HAPPY";
+        // Handle Exception if user provides invalid mood
+        try {
+            if (message.contains("happy")) {
+                return "HAPPY";
+            }
+            else {
+                return "SAD";
+            }
         }
-        else {
-            return "SAD";
+        catch (NullPointerException e) {
+            return "HAPPY";
         }
     }
 }
