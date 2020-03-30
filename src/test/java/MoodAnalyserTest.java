@@ -1,5 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.lang.reflect.Constructor;
+
 public class MoodAnalyserTest {
 
     // Test for testing Happy mood
@@ -37,5 +40,14 @@ public class MoodAnalyserTest {
         catch (MoodAnalysisException e) {
             Assert.assertEquals(e.exceptionTypeObject,MoodAnalysisException.ExceptionType.NULL_EXCEPTION);
         }
+    }
+    // Test for checking if two objects are equal or not
+    @Test
+    public void givenMessage_whenObjectsAreEqual_shouldReturnTrue() throws MoodAnalysisException {
+        MoodAnalyser moodAnalyserObject1 = new MoodAnalyser();
+        Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyser");
+        MoodAnalyser moodAnalyserObject2 = MoodAnalyserFactory.createMoodAnalyserObject(constructor);
+        boolean result = moodAnalyserObject1.equals(moodAnalyserObject2);
+        Assert.assertTrue("true",result);
     }
 }
