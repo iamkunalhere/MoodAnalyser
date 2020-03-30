@@ -34,6 +34,8 @@ public class MoodAnalyser {
             throw new MoodAnalysisException("Enter the message,it cannot be null", MoodAnalysisException.ExceptionType.NULL_EXCEPTION);
         }
     }
+    // Override equals method for checking object equality
+    @Override
     public boolean equals (Object object1){
         if (this == object1) return true;
         if (object1 == null || getClass() != object1.getClass()) return false;
