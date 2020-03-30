@@ -5,7 +5,8 @@ public class MoodAnalysisException extends Exception {
         EMPTY_EXCEPTION,
         NULL_EXCEPTION,
         CLASS_NOT_FOUND,
-        METHOD_NOT_FOUND
+        METHOD_NOT_FOUND,
+        FIELD_NOT_FOUND
     }
     ExceptionType exceptionTypeObject;
     // Parameterized Constructor
