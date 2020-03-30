@@ -41,12 +41,12 @@ public class MoodAnalyserTest {
         }
     }
 
-    // Test for checking if two objects are equal or not
+    // Test for checking if two objects with parameter are equal or not
     @Test
-    public void givenMessage_whenObjectsAreEqual_shouldReturnTrue() throws MoodAnalysisException {
-        MoodAnalyser moodAnalyserObject1 = new MoodAnalyser();
-        Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyser");
-        MoodAnalyser moodAnalyserObject2 = MoodAnalyserFactory.createMoodAnalyserObject(constructor);
+    public void ObjectsAreEqual_withParameter_shouldReturnTrue() throws MoodAnalysisException {
+        MoodAnalyser moodAnalyserObject1 = new MoodAnalyser("Hi");
+        Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyser",String.class);
+        MoodAnalyser moodAnalyserObject2 = MoodAnalyserFactory.createMoodAnalyserObject(constructor,"Hi");
         boolean result = moodAnalyserObject1.equals(moodAnalyserObject2);
         Assert.assertTrue("true", result);
     }
