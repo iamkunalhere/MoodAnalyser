@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MoodAnalyser {
     String message;
 
@@ -31,5 +33,11 @@ public class MoodAnalyser {
         catch (NullPointerException e) {
             throw new MoodAnalysisException("Enter the message,it cannot be null", MoodAnalysisException.ExceptionType.NULL_EXCEPTION);
         }
+    }
+    public boolean equals (Object object1){
+        if (this == object1) return true;
+        if (object1 == null || getClass() != object1.getClass()) return false;
+        MoodAnalyser object2 = (MoodAnalyser) object1;
+        return Objects.equals(message, object2.message);
     }
 }
