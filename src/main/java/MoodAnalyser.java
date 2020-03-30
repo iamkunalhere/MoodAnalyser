@@ -9,7 +9,6 @@ public class MoodAnalyser {
     public MoodAnalyser() {
 
     }
-
     // Parameterized constructor
     public MoodAnalyser(String message) {
         this.message = message;

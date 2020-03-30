@@ -1,4 +1,5 @@
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory {
     //Default Constructor
@@ -14,4 +15,17 @@ public class MoodAnalyserFactory {
            throw new MoodAnalysisException("method not found",MoodAnalysisException.ExceptionType.METHOD_NOT_FOUND);
        }
    }
+    public static MoodAnalyser createMoodAnalyserObject(Constructor constructor) {
+        try {
+            return (MoodAnalyser) constructor.newInstance();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
+
