@@ -50,4 +50,14 @@ public class MoodAnalyserTest {
         boolean result = moodAnalyserObject1.equals(moodAnalyserObject2);
         Assert.assertTrue("true",result);
     }
+    // Test for checking improper class name
+    @Test
+    public void givenClassName_whenImproper_shouldThrowException() {
+        try {
+            MoodAnalyserFactory.getConstructor("Analyser");
+        }
+        catch (MoodAnalysisException e){
+            Assert.assertEquals(e.exceptionTypeObject,MoodAnalysisException.ExceptionType.CLASS_NOT_FOUND);
+        }
+    }
 }
