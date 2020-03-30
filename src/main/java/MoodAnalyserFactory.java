@@ -1,10 +1,11 @@
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class MoodAnalyserFactory {
     //Default Constructor
-   public static Constructor getConstructor(String className , Class... parameter) throws MoodAnalysisException {
+    public static Constructor getConstructor(String className , Class... parameter) throws MoodAnalysisException {
        try {
            Class<?> moodAnalyserClass = Class.forName(className);
            return moodAnalyserClass.getConstructor(parameter);
@@ -15,7 +16,7 @@ public class MoodAnalyserFactory {
        catch (NoSuchMethodException e) {
            throw new MoodAnalysisException("method not found",MoodAnalysisException.ExceptionType.METHOD_NOT_FOUND);
        }
-   }
+    }
     public static MoodAnalyser createMoodAnalyserObject(Constructor constructor, Object... moodAnalyserObject) {
         try {
             return (MoodAnalyser) constructor.newInstance(moodAnalyserObject);
@@ -45,6 +46,19 @@ public class MoodAnalyserFactory {
             e.printStackTrace();
         }
         return null;
+    }
+    public static void moodAnalyserFieldMethod(Object object, String message, String fieldValue) {
+        try {
+            Class<?> classObject = object.getClass();
+            Field fieldObject = classObject.getDeclaredField(message);
+            fieldObject.set(object,fieldValue);
+        }
+        catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+        catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
 }
 
